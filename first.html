@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        #head {
+            transition: all 0.3s ease;
+        }
+
+        .swap {
+            margin-left: -300px;
+        }
+        .col{
+            background-color: aquamarine;
+            height: 50px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="phone" type="number" name="" >
+    <div id="head" class="swap">
+        <button>home</button>
+        <button>home</button>
+        <button>home</button>
+        <button>home</button>
+    </div>
+    <button id="add" class="col">ADD</button>
+    <button id="chg" class="col">Change</button>
+    <button id="nml" class="col" class="hidden">Normal</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#chg').click(function () {
+                $('#head').removeClass("swap");
+                $('#chg').addClass("hidden");
+                $('#nml').removeClass("hidden");
+            });
+
+
+            $('#nml').click(function () {
+                $('#head').addClass("swap");
+                $('#chg').removeClass("hidden");
+                $('#nml').addClass("hidden");
+            });
+
+            var i = 0;
+
+            $('#add').click(function () {
+                if(i < 5){
+                    $('#head').append(`<button>home</button>`);
+                    i++;
+                }
+            });
+
+
+
+
+            $('#phone').keyup(function () {
+                var phone = $(this).val();
+                if (phone.length > 10) {
+                    $('#phone').css("border","2px solid red");
+                    // console.log("Corrent");
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>.
